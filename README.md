@@ -3,30 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi persona favorita 💘</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Para mi amor 🧡</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #ff4d6d;
-            --secondary: #ff758c;
-            --accent: #80ffdb;
-            --bg-gradient: linear-gradient(45deg, #1a0b2e, #4a1e6e, #2a0944);
+            --bg-color: #ffb3b3;
+            --grid-color: #ff9999;
+            --card-bg: #fffbf2;
+            --border-color: #5d4037;
+            --accent-orange: #ff8c42;
+            --text-main: #5d4037;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Press Start 2P', cursive; }
 
         body {
-            background: var(--bg-gradient);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #fff;
+            /* Fondo de cuadros Pixel Art */
+            background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(45deg, var(--grid-color) 25%, transparent 25%), 
+                linear-gradient(-45deg, var(--grid-color) 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, var(--grid-color) 75%), 
+                linear-gradient(-45deg, transparent 75%, var(--grid-color) 75%);
+            background-size: 60px 60px;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -35,219 +34,242 @@
             position: relative;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Corazones flotantes de fondo */
-        .heart-particle {
+        /* Corazones flotantes decorativos */
+        .floating-heart {
             position: absolute;
-            color: rgba(255, 77, 109, 0.4);
-            pointer-events: none;
+            color: white;
+            opacity: 0.6;
+            font-size: 20px;
+            animation: float 6s infinite linear;
             z-index: 1;
-            animation: floatUp linear infinite;
+            pointer-events: none;
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+        @keyframes float {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
             50% { opacity: 0.8; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
 
-        .container {
-            max-width: 600px;
+        /* Interfaz tipo Ventana de Videojuego */
+        .window {
+            background: var(--card-bg);
+            border: 6px solid var(--border-color);
+            box-shadow: 12px 12px 0px rgba(0,0,0,0.1);
             width: 90%;
-            padding: 50px 30px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            z-index: 10;
-            text-align: center;
-            transition: all 0.5s ease;
-        }
-
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #ff8fa3, #ff4d6d, #c9184a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 5px #ff4d6d); }
-            to { filter: drop-shadow(0 0 15px #ff8fa3); }
-        }
-
-        p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: #fce4ec;
-        }
-
-        .btn-container {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        button {
-            padding: 15px 35px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        #yesBtn {
-            background: #ff4d6d;
-            color: white;
-            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.4);
-        }
-
-        #yesBtn:hover {
-            transform: scale(1.1);
-            background: #ff758c;
-            box-shadow: 0 15px 30px rgba(255, 77, 109, 0.6);
-        }
-
-        #noBtn {
-            background: #6c757d;
-            color: white;
+            max-width: 500px;
             position: relative;
-            z-index: 11;
+            z-index: 10;
+            padding: 0;
+            image-rendering: pixelated;
         }
 
-        .hidden { display: none; }
-
-        .fade-in {
-            animation: fadeIn 1s forwards;
+        .window-header {
+            background: var(--accent-orange);
+            border-bottom: 6px solid var(--border-color);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .header-dot {
+            width: 15px; height: 15px;
+            background: var(--border-color);
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
         }
 
-        .hearts-final {
-            font-size: 3rem;
-            margin-top: 20px;
+        .content {
+            padding: 30px 20px;
+            text-align: center;
         }
 
-        @media (max-width: 480px) {
-            h1 { font-size: 2.8rem; }
-            .container { padding: 30px 20px; }
+        h1 { font-size: 0.9rem; color: var(--text-main); line-height: 1.6; margin-bottom: 20px; }
+        .subtitle { font-size: 0.55rem; color: var(--text-main); line-height: 1.8; margin-bottom: 25px; }
+
+        /* Botones Pixel */
+        .btn-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+
+        .pixel-btn {
+            background: white;
+            border: 4px solid var(--border-color);
+            padding: 15px;
+            font-size: 0.55rem;
+            cursor: pointer;
+            box-shadow: 6px 6px 0px var(--border-color);
+            transition: all 0.1s;
+            color: var(--text-main);
+            outline: none;
         }
+
+        .pixel-btn:active { transform: translate(4px, 4px); box-shadow: 0px 0px 0px; }
+        .pixel-btn.primary { background: var(--accent-orange); color: white; }
+
+        /* Contador y Carta */
+        #countdown {
+            font-size: 0.7rem;
+            color: #d35400;
+            background: #fdf2e9;
+            border: 4px solid var(--border-color);
+            padding: 15px;
+            margin: 20px 0;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .letter-box {
+            font-size: 0.5rem;
+            line-height: 1.8;
+            text-align: left;
+            padding: 20px;
+            background: #fff;
+            border: 4px solid var(--border-color);
+            max-height: 250px;
+            overflow-y: auto;
+            color: var(--text-main);
+        }
+
+        #patience-msg {
+            color: #e74c3c;
+            font-size: 0.55rem;
+            height: 25px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .hidden { display: none !important; }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
-    <div id="screen1" class="container fade-in">
-        <h1>¡Hola, especial! 💘</h1>
-        <p>Tengo algo muy importante que preguntarte... <br> ¿Te gustaría ser mi cita perfecta para este San Valentín?</p>
-        
-        <div class="btn-container">
-            <button id="yesBtn" onclick="celebrate()">¡SÍ, ACEPTO! 😍</button>
-            <button id="noBtn" onmouseover="moveNoButton()">No 😢</button>
+    <div id="hearts-container"></div>
+
+    <div id="screen1" class="window">
+        <div class="window-header">
+            <div class="header-dot"></div>
+            <span style="font-size: 0.5rem; color: white;">MENSAJE_NUEVO.EXE</span>
+            <div class="header-dot"></div>
+        </div>
+        <div class="content">
+            <h1>¡HOLA, MI GORDA! 🧡</h1>
+            <p class="subtitle">¿QUISIERAS PASAR UN SAN VALENTÍN INOLVIDABLE A MI LADO?</p>
+            <div class="btn-container">
+                <button class="pixel-btn primary" onclick="accept()">¡SÍ, ACEPTO! ❤️</button>
+                <button id="noBtn" class="pixel-btn" onmouseover="moveNo()">NO 🙈</button>
+            </div>
         </div>
     </div>
 
-    <div id="screen2" class="container hidden">
-        <h1>¡SABÍA QUE SÍ! 🌟</h1>
-        <p>Has hecho mi día el más feliz de todos. <br> 
-        Nos vemos a las <b>8:00 PM</b> en nuestro lugar favorito. <br>
-        ¡Prepárate para una noche inolvidable!</p>
-        <div class="hearts-final">💑 ✨ 🎁 🌹 💖</div>
+    <div id="screen2" class="window hidden">
+        <div class="window-header">
+            <div class="header-dot"></div>
+            <span style="font-size: 0.5rem; color: white;">CONFIRMADO.EXE</span>
+            <div class="header-dot"></div>
+        </div>
+        <div class="content">
+            <h1>¡SABÍA QUE SÍ!</h1>
+            <div style="font-size: 4rem; margin: 20px 0; cursor: pointer;" onclick="tryOpen()">✉️</div>
+            <div id="patience-msg"></div>
+            <button class="pixel-btn primary" onclick="tryOpen()">ABRIR CARTA</button>
+        </div>
     </div>
 
-    <audio id="romanticSound" loop>
-        <source src="https://docs.google.com/uc?export=download&id=1ZctXOc2RT5R4VDy3k53L5K5J94vkg_I_" type="audio/mpeg">
-    </audio>
+    <div id="screen3" class="window hidden">
+        <div class="window-header">
+            <div class="header-dot"></div>
+            <span id="window-title" style="font-size: 0.5rem; color: white;">ESPERANDO...</span>
+            <div class="header-dot"></div>
+        </div>
+        <div class="content">
+            <div id="countdownBox">
+                <p class="subtitle">SE REVELARÁ EL 14 A LAS 8:00 PM</p>
+                <div id="countdown">00:00:00</div>
+            </div>
+            
+            <div id="fullLetter" class="letter-box hidden">
+                Mi amor,<br><br>
+                Hoy me detuve a pensar en todo el camino que hemos recorrido. Eres el hilo conductor de mis mejores recuerdos.<br><br>
+                San Valentín ya no es solo flores, es saber que nuestra historia es real. Gracias por ser mi paz y mi risa. Te elijo cada mañana.<br><br>
+                Eres mi hogar. Te amo hoy más que nunca.
+            </div>
+            
+            <button class="pixel-btn" onclick="goBack()" style="margin-top: 20px;">VOLVER</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <script>
-        // Iniciar corazones de fondo al cargar
-        function createHearts() {
-            const container = document.body;
-            for (let i = 0; i < 25; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart-particle';
-                heart.innerHTML = '❤️';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                heart.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(heart);
-            }
-        }
-        createHearts();
+        // CONFIGURACIÓN: 14 de Febrero a las 8:00 PM (20:00:00)
+        const targetDate = new Date("February 14, 2026 20:00:00").getTime();
 
-        // Mover el botón "No" aleatoriamente
-        function moveNoButton() {
+        // Generar corazones flotantes de fondo
+        const heartsContainer = document.getElementById('hearts-container');
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            heartsContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHeart, 400);
+
+        function moveNo() {
             const btn = document.getElementById('noBtn');
-            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
-            
             btn.style.position = 'absolute';
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
+            btn.style.left = Math.random() * 80 + '%';
+            btn.style.top = Math.random() * 80 + '%';
         }
 
-        // Función de celebración
-        function celebrate() {
-            // Cambiar pantallas
+        function accept() {
             document.getElementById('screen1').classList.add('hidden');
-            const s2 = document.getElementById('screen2');
-            s2.classList.remove('hidden');
-            s2.classList.add('fade-in');
-
-            // Reproducir música (los navegadores permiten audio tras este click)
-            const audio = document.getElementById('romanticSound');
-            audio.volume = 0.5;
-            audio.play();
-
-            // Lanzar confeti continuo
-            const duration = 15 * 1000;
-            const animationEnd = Date.now() + duration;
-            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-            function randomInRange(min, max) {
-              return Math.random() * (max - min) + min;
-            }
-
-            const interval = setInterval(function() {
-              const timeLeft = animationEnd - Date.now();
-
-              if (timeLeft <= 0) {
-                return clearInterval(interval);
-              }
-
-              const particleCount = 50 * (timeLeft / duration);
-              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-            }, 250);
+            document.getElementById('screen2').classList.remove('hidden');
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#ff8c42', '#ffffff', '#ffb3b3'] });
         }
 
-        // Activar música al primer toque en cualquier parte (por si acaso no dan clic al botón rápido)
-        document.body.addEventListener('click', () => {
-            const audio = document.getElementById('romanticSound');
-            if (audio.paused && !document.getElementById('screen2').classList.contains('hidden')) {
-                audio.play();
+        function tryOpen() {
+            const now = new Date().getTime();
+            const msg = document.getElementById('patience-msg');
+            
+            if (now < targetDate) {
+                msg.innerText = "SE PACIENTE GORDA 🧡";
+                setTimeout(() => { msg.innerText = ""; }, 3000);
             }
-        }, { once: true });
+            
+            document.getElementById('screen2').classList.add('hidden');
+            document.getElementById('screen3').classList.remove('hidden');
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
 
+        function updateClock() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            const display = document.getElementById('countdown');
+            const letter = document.getElementById('fullLetter');
+            const box = document.getElementById('countdownBox');
+            const title = document.getElementById('window-title');
+
+            if (diff <= 0) {
+                box.classList.add('hidden');
+                letter.classList.remove('hidden');
+                title.innerText = "TU CARTA DE AMOR.EXE";
+            } else {
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+                display.innerText = `${d}D ${h}H ${m}M ${s}S`;
+                title.innerText = "ESPERANDO...";
+            }
+        }
+
+        function goBack() {
+            document.getElementById('screen3').classList.add('hidden');
+            document.getElementById('screen2').classList.remove('hidden');
+        }
     </script>
 </body>
 </html>
